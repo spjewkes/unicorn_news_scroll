@@ -145,23 +145,24 @@ def mainloop(config):
 
         for text in rss:
             output_text = "{}: {} ==> {}".format(time.strftime("%d/%m/%Y %H:%M:%S"), text[0], text[1])
-            
+            scroll_text(output_text)
             time.sleep(2)
 
 if __name__ == "__main__":
 
-try:
-    parser = argparse.ArgumentParser(description='Scan for keywords on Twitter and scroll on Unicorn Hat HD.')
-    parser.add_argument('--config', help="Config file to load", nargs='?', type=str, default="default.json")
-    parser.add_argument('--verbose', help="Enables verbose output on command line (including any dropped tweets)", action='store_true')
-    args = parser.parse_args()
+    try:
+        parser = argparse.ArgumentParser(description='Scan for keywords on Twitter and scroll on Unicorn Hat HD.')
+        parser.add_argument('--config', help="Config file to load", nargs='?', type=str, default="default.json")
+        parser.add_argument('--verbose', help="Enables verbose output on command line (including any dropped tweets)", action='store_true')
+        args = parser.parse_args()
                         
-    with open(args.config, 'r') as myfile:
-        config = json.load(myfile)
+        with open(args.config, 'r') as myfile:
+            config = json.load(myfile)
 
-    FONT = (config["font"]["name"], config["font"]["size"])
-    mainloop(config)
+        FONT = (config["font"]["name"], config["font"]["size"])
+        mainloop(config)
         
-except KeyboardInterrupt:
-    unicornhathd.off()
-    print("Exiting!")
+    except KeyboardInterrupt:
+        unicornhathd.off()
+        print("Exiting!")
+
