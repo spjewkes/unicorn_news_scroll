@@ -1,0 +1,11 @@
+{
+    "font" : {
+		"name" : "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
+		"size" : 12
+    },
+    "unicornhathd" : {
+		"rotation" : 90,
+		"brightness" : 1.0
+    },
+    "max_queue_size" : 0
+}
