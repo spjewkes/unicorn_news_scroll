@@ -119,9 +119,6 @@ def mainloop(config):
     unicornhathd.rotation(config["unicornhathd"]["rotation"])
     unicornhathd.brightness(config["unicornhathd"]["brightness"])
 
-    # Wait a moment to allow the chance for the queue to start filling up
-    time.sleep(5)
-    
     rss_feeds = []
     rss_feeds.append("https://feeds.bbci.co.uk/news/rss.xml")
     rss_feeds.append("https://feeds.bbci.co.uk/news/world/rss.xml")
@@ -144,9 +141,9 @@ def mainloop(config):
                 rss.extend(get_data_list(xml_data))
 
         for text in rss:
-            output_text = "{}: {} ==> {}".format(time.strftime("%d/%m/%Y %H:%M:%S"), text[0], text[1])
+            output_text = u"{}: {} ==> {}".format(time.strftime("%d/%m/%Y %H:%M:%S"), text[0], text[1])
             scroll_text(output_text)
-            time.sleep(2)
+            time.sleep(0.25)
 
 if __name__ == "__main__":
 
